@@ -48,7 +48,8 @@ app = create_app()
 
 f_handler = logging.FileHandler('file.log')
 f_handler.setLevel(logging.DEBUG)
-f_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s'))
+f_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s\
+    %(name)s %(threadName)s : %(message)s'))
 app.logger.addHandler(f_handler)
 
 # -----------------------------------------------------------------------------
@@ -220,7 +221,8 @@ def update_task(task_id):
     task.done = request.json.get('done', task.done)
     try:
         db.session.commit()
-        app.logger.info('Task with id: ' + str(task.id) + ' and title ' + task.title + ' is up to date')       
+        app.logger.info('Task with id: ' + str(task.id) + ' and title '\
+            + task.title + ' is up to date')       
     except :
         app.logger.exception('Operation failed')
         return method_not_allowed()
@@ -236,7 +238,8 @@ def delete_task(task_id):
     try:
         db.session.delete(task)
         db.session.commit()
-        app.logger.info('Task with id: ' + str(task.id) + ' and title ' + task.title + ' successfully deleted')
+        app.logger.info('Task with id: ' + str(task.id) + ' and title '\
+            + task.title + ' successfully deleted')
     except:
         app.logger.exception('Operation failed')
         abort(404)
@@ -285,7 +288,8 @@ def delete_user(users_id):
     try:
         db.session.delete(user)
         db.session.commit()
-        app.logger.info('User with id: ' + str(user.id) + ' and name ' + user.name + ' successfully deleted')
+        app.logger.info('User with id: ' + str(user.id) + ' and name ' + user.name + \
+            ' successfully deleted')
     except:
         app.logger.exception('Operation failed')
         abort(404)
@@ -300,7 +304,8 @@ def get_users():
     if not request.json:
         app.logger.warning('No request.json')
         abort(400)
-    if request.json['secret_key'] == None or request.json['secret_key'] != app.config['SECRET_KEY_FOR_USERS_EXTRACTING'] :
+    if request.json['secret_key'] == None or \
+            request.json['secret_key'] != app.config['SECRET_KEY_FOR_USERS_EXTRACTING'] :
         app.logger.warning('Wrong data')
         abort(400)
     users = User.query.order_by(User.id.desc()).all()
