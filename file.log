@@ -1,0 +1,494 @@
+2021-07-21 02:24:25,857 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:24:25,862 INFO app Thread-2 : request on tasks
+2021-07-21 02:26:00,221 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 02:26:00,222 INFO app Thread-3 : Task creation...
+2021-07-21 02:26:00,379 ERROR app Thread-3 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 200, in create_task
+    app.logger.info('New task with id: ' + str(task[id]) + ' and title ' + task['title'] + ' created')
+KeyError: <built-in function id>
+2021-07-21 02:28:22,542 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-21 02:28:22,545 INFO app Thread-4 : request on tasks
+2021-07-21 02:29:03,532 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:29:03,533 INFO app Thread-2 : Task creation...
+2021-07-21 02:29:03,669 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 200, in create_task
+    app.logger.info('New task with id: ' + str(task[id]) + ' and title ' + task['title'] + ' created')
+KeyError: <built-in function id>
+2021-07-21 02:32:18,099 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:32:18,100 INFO app Thread-2 : Task creation...
+2021-07-21 02:32:18,228 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 200, in create_task
+    app.logger.info('New task with id: ' + str(task[id]) + ' and title ' + task.title + ' created')
+KeyError: <built-in function id>
+2021-07-21 02:32:40,715 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:32:40,716 INFO app Thread-2 : Task creation...
+2021-07-21 02:32:40,830 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 200, in create_task
+    app.logger.info('New task with id: ' + str(task.id) + ' and title ' + task.title + ' created')
+AttributeError: 'dict' object has no attribute 'id'
+2021-07-21 02:34:49,142 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:34:49,142 INFO app Thread-2 : Task creation...
+2021-07-21 02:34:49,260 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 201, in create_task
+    app.logger.info('New task with id: ' + str(db.session.id) + ' and title ' + task.title + ' created')
+AttributeError: 'scoped_session' object has no attribute 'id'
+2021-07-21 02:35:23,518 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:35:23,519 INFO app Thread-2 : Task creation...
+2021-07-21 02:35:23,643 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 201, in create_task
+    app.logger.info('New task ' + task.title + ' created')
+AttributeError: 'dict' object has no attribute 'title'
+2021-07-21 02:35:58,344 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:35:58,345 INFO app Thread-2 : Task creation...
+2021-07-21 02:35:58,494 INFO app Thread-2 : New task New_title_222 created
+2021-07-21 02:36:40,950 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 02:36:40,955 INFO app Thread-3 : request on tasks
+2021-07-21 02:37:55,290 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-21 02:37:55,291 INFO app Thread-4 : Task update...
+2021-07-21 02:37:55,406 INFO app Thread-4 : Task with id: 5 and title REPLACED is up to date
+2021-07-21 02:39:54,468 WARNING app Thread-2 : Operation failed, prob reason - no user, or empty password
+2021-07-21 02:41:33,176 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 02:41:33,176 INFO app Thread-3 : User creating...
+2021-07-21 02:41:33,461 ERROR app Thread-3 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 276, in create_user
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.name
+[SQL: INSERT INTO users (name, password) VALUES (?, ?)]
+[parameters: ('SuperUser', 'pbkdf2:sha256:260000$KmvOfs25SeVd7pdA$ccec153dda2c4864777fea184359c496c1511287c4ea6c97c9562548c50a5f7f')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-07-21 02:43:36,302 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:43:36,303 INFO app Thread-2 : User creating...
+2021-07-21 02:43:36,581 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 276, in create_user
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.name
+[SQL: INSERT INTO users (name, password) VALUES (?, ?)]
+[parameters: ('SuperUser', 'pbkdf2:sha256:260000$rA1JaKO4x9hLqO8Y$a44ab0a4c1abf3eafb32364ecf1bcc7f1e11299d10a31329f7a5f069ede7fc0a')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-07-21 02:44:41,554 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:44:41,555 INFO app Thread-2 : User creating...
+2021-07-21 02:44:41,863 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 276, in create_user
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.name
+[SQL: INSERT INTO users (name, password) VALUES (?, ?)]
+[parameters: ('SuperUser', 'pbkdf2:sha256:260000$IODOEsNdVo8gM74t$de6fdaf1d87498b020f8f25a741e32e52a661871917f294af41ca6ae6bb2bc97')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-07-21 02:44:47,019 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 02:44:47,020 INFO app Thread-3 : User creating...
+2021-07-21 02:44:47,325 ERROR app Thread-3 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 276, in create_user
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.name
+[SQL: INSERT INTO users (name, password) VALUES (?, ?)]
+[parameters: ('SuperUser', 'pbkdf2:sha256:260000$DnYKqA5ntPA87D5P$bae29ff9e5d9ffc7818569a76547061cd3e2c764627b999635c1d22a81f547e8')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-07-21 02:50:11,819 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 02:50:11,820 INFO app Thread-2 : User creating...
+2021-07-21 02:50:12,108 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 276, in create_user
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.name
+[SQL: INSERT INTO users (name, password) VALUES (?, ?)]
+[parameters: ('SuperUser', 'pbkdf2:sha256:260000$NIxEmj0PJxxt9QUy$7a4ec4c3072e3bb35105a66c11664b01f283614cacbdc4f834887302141cbd71')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-07-21 02:50:45,725 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 02:50:45,725 INFO app Thread-3 : User creating...
+2021-07-21 02:51:58,571 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 02:51:58,572 INFO app Thread-3 : User creating...
+2021-07-21 02:52:02,408 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-21 02:52:02,409 INFO app Thread-4 : User creating...
+2021-07-21 02:52:02,813 INFO app Thread-4 : New user with name SuperUser43 successfully created
+2021-07-21 03:03:06,939 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 03:03:06,940 INFO app Thread-3 : Get all users...
+2021-07-21 03:04:48,473 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 03:04:48,473 INFO app Thread-2 : Get all users...
+2021-07-21 03:04:59,473 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 03:04:59,474 INFO app Thread-2 : Get all users...
+2021-07-21 03:06:09,231 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 03:06:09,232 INFO app Thread-2 : Get all users...
+2021-07-21 03:06:09,235 WARNING app Thread-2 : No request.json
+2021-07-21 03:06:21,161 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 03:06:21,162 INFO app Thread-3 : Get all users...
+2021-07-21 03:06:21,165 WARNING app Thread-3 : No request.json
+2021-07-21 03:06:54,994 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-21 03:06:54,995 INFO app Thread-4 : Get all users...
+2021-07-21 03:06:55,001 INFO app Thread-4 : Operation get_users success
+2021-07-21 03:14:47,744 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 03:14:47,745 INFO app Thread-2 : Task delete...
+2021-07-21 03:14:47,865 INFO app Thread-2 : Task with id: 4 and title New_title_222 successfully deleted
+2021-07-21 16:34:14,828 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 16:34:14,839 INFO app Thread-2 : User creating...
+2021-07-21 16:34:15,179 ERROR app Thread-2 : Operation failed
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\app.py", line 276, in create_user
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
+    self._prepare_impl()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3298, in flush
+    self._flush(objects)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3438, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3398, in _flush
+    flush_context.execute()
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 242, in save_obj
+    _emit_insert_statements(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 1219, in _emit_insert_statements
+    result = connection._execute_20(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1583, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1452, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1814, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1995, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
+    raise exception
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1771, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\Wrong_Way\Desktop\original\rest-flask-vv\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.name
+[SQL: INSERT INTO users (name, password) VALUES (?, ?)]
+[parameters: ('SuperUser43', 'pbkdf2:sha256:260000$qWzxE2SIzTyUISYs$1f492bf2783e9d65631cadcf41836b2beec33f4519b8931ea48a1e1189410547')]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-07-21 16:37:30,038 INFO app Thread-3 : Get all users...
+2021-07-21 16:37:30,045 INFO app Thread-3 : Operation get_users success
+2021-07-21 16:45:06,159 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 16:45:06,160 INFO app Thread-2 : Get all users...
+2021-07-21 16:45:06,167 INFO app Thread-2 : Operation get_users success
+2021-07-21 16:50:57,505 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 16:50:57,505 INFO app Thread-3 : Get all users...
+2021-07-21 16:50:57,509 INFO app Thread-3 : Operation get_users success
+2021-07-21 16:51:17,724 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 16:51:17,724 INFO app Thread-2 : Get all users...
+2021-07-21 16:51:17,727 INFO app Thread-2 : Operation get_users success
+2021-07-21 16:56:08,746 INFO app Thread-2 : Task delete...
+2021-07-21 16:56:09,011 INFO app Thread-2 : Task with id: 3 and title New_title_2 successfully deleted
+2021-07-21 16:57:47,082 INFO app Thread-2 : User delete...
+2021-07-21 16:57:47,305 INFO app Thread-2 : User with id: 3 and name SuperUser33 successfully deleted
+2021-07-21 17:03:06,437 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 17:03:06,438 INFO app Thread-2 : Get all users...
+2021-07-21 17:03:06,440 WARNING app Thread-2 : No request.json
+2021-07-21 17:03:38,741 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 17:03:38,742 INFO app Thread-3 : Get all users...
+2021-07-21 17:03:38,746 INFO app Thread-3 : Operation get_users success
+2021-07-21 17:53:15,351 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-21 17:53:15,352 INFO app Thread-2 : Get all users...
+2021-07-21 17:53:15,356 INFO app Thread-2 : Operation get_users success
+2021-07-21 17:54:14,759 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-21 17:54:14,759 INFO app Thread-3 : Get all users...
+2021-07-21 17:54:14,761 WARNING app Thread-3 : No request.json
+2021-07-21 17:54:29,871 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-21 17:54:29,874 INFO app Thread-4 : request on tasks
+2021-07-22 00:01:34,552 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-22 00:01:34,557 INFO app Thread-2 : request on tasks
+2021-07-22 00:01:47,362 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-22 00:01:47,367 INFO app Thread-3 : request on tasks
+2021-07-22 00:01:47,368 INFO app Thread-3 : Task with id: 5 and title REPLACED shown
+2021-07-22 00:01:59,677 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-22 00:01:59,679 INFO app Thread-4 : request on tasks
+2021-07-22 00:04:40,512 WARNING app Thread-5 : Operation failed, prob reason - no user, or empty password
+2021-07-22 00:06:51,379 INFO app Thread-2 : successfully logged in as : SuperUser
+2021-07-22 00:06:51,380 INFO app Thread-2 : Task creation...
+2021-07-22 00:06:51,511 INFO app Thread-2 : New task Read a book created
+2021-07-22 00:11:00,399 INFO app Thread-3 : successfully logged in as : SuperUser
+2021-07-22 00:11:00,403 INFO app Thread-3 : request on tasks
+2021-07-22 00:14:26,209 INFO app Thread-4 : successfully logged in as : SuperUser
+2021-07-22 00:14:26,209 INFO app Thread-4 : Task update...
+2021-07-22 00:14:26,320 INFO app Thread-4 : Task with id: 2 and title Nice book Updated is up to date
+2021-07-22 00:28:27,676 INFO app Thread-5 : successfully logged in as : SuperUser
+2021-07-22 00:28:27,677 INFO app Thread-5 : User creating...
+2021-07-22 00:28:28,236 INFO app Thread-5 : New user with name SuperUser443 successfully created
+2021-07-22 00:30:26,408 INFO app Thread-6 : successfully logged in as : SuperUser
+2021-07-22 00:30:26,409 INFO app Thread-6 : Get all users...
+2021-07-22 00:30:26,413 INFO app Thread-6 : Operation get_users success
+2021-07-22 00:31:06,089 INFO app Thread-7 : successfully logged in as : SuperUser
+2021-07-22 00:31:06,089 INFO app Thread-7 : User delete...
+2021-07-22 00:31:06,201 INFO app Thread-7 : User with id: 4 and name SuperUser31 successfully deleted
