@@ -24,13 +24,15 @@
 # There are 3 different security keys for each operation with users
 #
 # Get all users :
-# curl -X GET -u SuperUser:qwerty -H "Content-Type: application/json" -d "{\"secret_key\":\"AJ!#r0vU4Ts1A*NO:kCbHUL`1CgInwN\"}" https://rest-flask-vv.herokuapp.com//todo/api/v1.0/users
+# curl -X GET -u SuperUser:qwerty -H "Content-Type: application/json" -d "{\"secret_key\":\"AJ!#r0vU4Ts1A*
 #
 # Add user :
-# curl -u SuperUser:qwerty -X POST -H "Content-Type: application/json" -d "{\"name\":\"SuperUser443\",\"password\":\"qwerty\",\"secret_key\":\"2.-q6uw$,pqbc[(bM{Sly~ExT/Hkru\"}" https://rest-flask-vv.herokuapp.com//todo/api/v1.0/users
+# curl -u YourUniqueUserName:qwerty -X POST -H "Content-Type: application/json" -d "{\"name\":\"SuperUser443\",\"password\":\"qwerty\",\"secret_key\":\"2.-q6uw$,pqbc[(bM{Sly~ExT/Hkru\"}" https://rest-flask-vv.herokuapp.com//todo/api/v1.0/users
+#
 #
 # Delete user :
-# curl -X DELETE -u SuperUser:qwerty -H "Content-Type: application/json" -d "{\"secret_key\":\"2.-q6uw$,pqbc[(bM{Sly~ExT/Hkru\"}" https://rest-flask-vv.herokuapp.com//todo/api/v1.0/users/4
+# curl -X DELETE -u SuperUser:qwerty -H "Content-Type: application/json" -d "{\"secret_key\":\"2.-q6uw$,pqbc[(bM{Sly~ExT/Hkru\"}" https://rest-flask-vv.herokuapp.com//todo/api/v1.0/users/<user_id>
+#
 #
 #
 # took an idea from https://habr.com/ru/post/246699/

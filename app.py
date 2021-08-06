@@ -213,7 +213,7 @@ def create_task():
 
         task['done'] = True
         app.logger.info('New task ' + task['title'] + ' created')
-    except:
+    except Exception:
         app.logger.exception('Operation failed')
         return method_not_allowed()
     return jsonify({'task': task})
@@ -252,7 +252,7 @@ def update_task(task_id):
         db.session.commit()
         app.logger.info('Task with id: ' + str(task.id) + ' and title '\
             + task.title + ' is up to date')       
-    except:
+    except Exception:
         app.logger.exception('Operation failed')
         return method_not_allowed()
 
@@ -273,7 +273,7 @@ def delete_task(task_id):
         db.session.commit()
         app.logger.info('Task with id: ' + str(task.id) + ' and title '\
             + task.title + ' successfully deleted')
-    except:
+    except Exception:
         app.logger.exception('Operation failed')
         abort(404)
     
@@ -326,7 +326,7 @@ def create_user():
         db.session.commit()
         app.logger.info('New user with name ' + user.name + ' successfully created')
         return jsonify({'user': user.to_json()})
-    except:
+    except Exception:
         app.logger.exception('Operation failed')
         return method_not_allowed()
 
@@ -350,7 +350,7 @@ def delete_user(users_id):
         db.session.commit()
         app.logger.info('User with id: ' + str(user.id) + ' and name ' + user.name + \
             ' successfully deleted')
-    except:
+    except Exception:
         app.logger.exception('Operation failed')
         abort(404)
     return jsonify({'result': True})
