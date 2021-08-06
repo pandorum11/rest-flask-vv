@@ -77,7 +77,13 @@ def unauthorized():
 
 # -----------------------------------------------------------------------------
 
-# database block 
+# database block
+
+# -------------------------------------------------------
+
+#   id        |  title      | description  |   done
+
+#   Integer   |  String(30) | String(100)  |   Boolean()
 
 db = SQLAlchemy(app)
 
@@ -98,6 +104,13 @@ class Task(db.Model):
             'description': self.description,
             'done': self.done
         }
+
+
+# -------------------------------------------------------
+
+#   id      | title      |   description    |   done
+
+#   Integer | String(40) |   String(50)     |   Boolean(50)
 
 
 class User(db.Model):
@@ -122,6 +135,10 @@ class User(db.Model):
 
 @auth.verify_password
 def verify_password(username, password):
+    """
+    verifying password through
+    passlib.hash.sha256_crypt.verify(password, user.password_hash)
+    """
     match = User.query.filter(User.name==username)
     if match and username != '' and password != '':
         try:
@@ -139,11 +156,14 @@ def verify_password(username, password):
 
 # routes block
 
-# Get one task
+# GET for one task
 
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['GET'])
 @auth.login_required
 def get_task(task_id):
+    """
+    Router for 1 task, GET, by id
+    """
     task = Task.query.get(task_id)
     app.logger.info('request on tasks')
     if task == 0:
@@ -157,21 +177,26 @@ def get_task(task_id):
 @app.route('/todo/api/v1.0/tasks', methods=['GET'])
 @auth.login_required
 def get_tasks():
+    """
+    Router for all tasks, GET, by id
+    """
     tasks = Task.query.order_by(Task.id.desc()).all()
     app.logger.info('request on tasks')
     return jsonify({'tasks': list(map(make_public_task,map(Task.to_json, tasks)))})
 
 # chek on work main page
 
-# @app.route('/')
-# def index():
-#     return "Hello, World!"
+@app.route('/')
+def index():
+    return abort(404)
 
-# POST for tasks
 
 @app.route('/todo/api/v1.0/tasks', methods=['POST'])
 @auth.login_required
 def create_task():
+    """
+    Router for all tasks, POST
+    """
     app.logger.info('Task creation...')
     if not request.json or not 'title' in request.json:
         app.logger.warning(' Empty or empty title ')
@@ -179,7 +204,7 @@ def create_task():
 
     title = request.json['title']
     description = request.json['description']
-    task = Task(title = title, description = description, done = False)
+    task = Task(title=title, description=description, done=False)
 
     try:
         db.session.add(task)
@@ -187,7 +212,7 @@ def create_task():
         task = task.to_json()
 
         task['done'] = True
-        app.logger.info('New task ' + task['title']+ ' created')       
+        app.logger.info('New task ' + task['title'] + ' created')
     except:
         app.logger.exception('Operation failed')
         return method_not_allowed()
@@ -198,6 +223,9 @@ def create_task():
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['PUT'])
 @auth.login_required
 def update_task(task_id):
+    """
+    Router for update tasks, PUT, by id
+    """
     app.logger.info('Task update...')
     task = Task.query.get(task_id)
     if task == 0:
@@ -219,13 +247,15 @@ def update_task(task_id):
     task.title = request.json.get('title', task.title)
     task.description = request.json.get('description', task.description)
     task.done = request.json.get('done', task.done)
+
     try:
         db.session.commit()
         app.logger.info('Task with id: ' + str(task.id) + ' and title '\
             + task.title + ' is up to date')       
-    except :
+    except:
         app.logger.exception('Operation failed')
         return method_not_allowed()
+
     return jsonify({'task': task.to_json()})
 
 # Task delete
@@ -233,6 +263,9 @@ def update_task(task_id):
 @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['DELETE'])
 @auth.login_required
 def delete_task(task_id):
+    """
+    Router for delete task, DELETE, by id
+    """
     app.logger.info('Task delete...')
     task = Task.query.get_or_404(task_id)
     try:
@@ -248,13 +281,36 @@ def delete_task(task_id):
 
 # -----------------------------------------------------------------------------
 
-# routes for users
+# Routers for users
+
+# Get all users
+
+@app.route('/todo/api/v1.0/users', methods=['GET'])
+@auth.login_required
+def get_users():
+    """
+    Router for 1 user, GET, by id
+    """
+    app.logger.info('Get all users...')
+    if not request.json:
+        app.logger.warning('No request.json')
+        abort(400)
+    if request.json['secret_key'] == None or \
+            request.json['secret_key'] != app.config['SECRET_KEY_FOR_USERS_EXTRACTING']:
+        app.logger.warning('Wrong data')
+        abort(400)
+    users = User.query.order_by(User.id.desc()).all()
+    app.logger.info('Operation get_users success')
+    return jsonify({'users': list(map(User.to_json, users))})
 
 # Add a user
 
 @app.route('/todo/api/v1.0/users', methods=['POST'])
 @auth.login_required
 def create_user():
+    """
+    Router for create user, POST
+    """
     app.logger.info('User creating...')
     if not request.json or not 'name' in request.json \
              or request.json['secret_key'] != app.config['SECRET_KEY_FOR_USER_CREATING']:
@@ -264,6 +320,7 @@ def create_user():
     name = request.json['name']
     password = generate_password_hash(request.json['password'])
     user = User(name = name, password = password)
+
     try:
         db.session.add(user)
         db.session.commit()
@@ -278,12 +335,15 @@ def create_user():
 @app.route('/todo/api/v1.0/users/<int:users_id>', methods=['DELETE'])
 @auth.login_required
 def delete_user(users_id):
+    """
+    Router for delete task, DELETE, by id
+    """
     app.logger.info('User delete...')
     user = User.query.get_or_404(users_id)
     if not request.json:
         app.logger.warning('No request.json')
         abort(400)
-    if request.json['secret_key'] != app.config['SECRET_KEY_FOR_USERS_DELETE'] :
+    if request.json['secret_key'] != app.config['SECRET_KEY_FOR_USERS_DELETE']:
         app.logger.error('wrong data')   
     try:
         db.session.delete(user)
@@ -294,23 +354,6 @@ def delete_user(users_id):
         app.logger.exception('Operation failed')
         abort(404)
     return jsonify({'result': True})
-
-# Get all users
-
-@app.route('/todo/api/v1.0/users', methods=['GET'])
-@auth.login_required
-def get_users():
-    app.logger.info('Get all users...')
-    if not request.json:
-        app.logger.warning('No request.json')
-        abort(400)
-    if request.json['secret_key'] == None or \
-            request.json['secret_key'] != app.config['SECRET_KEY_FOR_USERS_EXTRACTING'] :
-        app.logger.warning('Wrong data')
-        abort(400)
-    users = User.query.order_by(User.id.desc()).all()
-    app.logger.info('Operation get_users success')
-    return jsonify({'users': list(map(User.to_json, users))})
 
 # -----------------------------------------------------------------------------
 
